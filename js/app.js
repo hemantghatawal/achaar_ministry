@@ -68,7 +68,7 @@ function renderProducts(list) {
       const selectedWeight = weightSelect.value;
       const qty = Number(qtyInput.value) || 1;
       const price = Number(product.weights[selectedWeight]);
-      addToCart(product.name[currentLang], selectedWeight, qty, price);
+      addToCart(product.id, product.name, selectedWeight, qty, price);
       qtyInput.value = 1;
       if (typeof renderCartModal === "function") {
         renderCartModal();
@@ -80,3 +80,4 @@ function renderProducts(list) {
 }
 
 loadProducts();
+

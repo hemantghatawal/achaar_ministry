@@ -4,15 +4,33 @@ function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function addToCart(product, weight, qty, price) {
+function getDisplayProductName(item) {
+  if (item.productNames && typeof item.productNames === "object") {
+    return item.productNames[currentLang] || item.productNames.en || item.productNames.hi || item.product;
+  }
+
+  return item.product;
+}
+
+function addToCart(productId, productNames, weight, qty, price) {
   const existingItem = cart.find(
-    (item) => item.product === product && item.weight === weight
+    (item) => item.productId === productId && item.weight === weight
   );
 
   if (existingItem) {
     existingItem.qty += qty;
+    if (productNames) {
+      existingItem.productNames = productNames;
+    }
   } else {
-    cart.push({ product, weight, qty, price });
+    cart.push({
+      productId,
+      productNames,
+      product: productNames?.en || productNames?.hi || "Product",
+      weight,
+      qty,
+      price,
+    });
   }
 
   saveCart();
@@ -57,10 +75,11 @@ function renderCartModal() {
   const itemsHtml = cart
     .map((item, index) => {
       const itemTotal = item.price * item.qty;
+      const displayName = getDisplayProductName(item);
       return `
         <div class="cart-item">
           <div>
-            <div><strong>${item.product}</strong></div>
+            <div><strong>${displayName}</strong></div>
             <div class="cart-item-meta">${item.weight} x ${item.qty} = ₹${itemTotal}</div>
           </div>
           <button class="cart-remove" type="button" data-index="${index}">Remove</button>

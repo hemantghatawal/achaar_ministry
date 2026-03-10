@@ -10,7 +10,13 @@ function sendOrder() {
 
   cart.forEach((item, i) => {
     const lineTotal = item.price * item.qty;
-    message += `${i + 1}. ${item.product} - ${item.weight} x${item.qty} - ₹${lineTotal}\n`;
+    const productName =
+      item.productNames?.[currentLang] ||
+      item.productNames?.en ||
+      item.productNames?.hi ||
+      item.product;
+
+    message += `${i + 1}. ${productName} - ${item.weight} x${item.qty} - ₹${lineTotal}\n`;
     total += lineTotal;
   });
 
