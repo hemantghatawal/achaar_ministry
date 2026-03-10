@@ -1,39 +1,86 @@
-[
+﻿[
   {
     "id": "kairi-chatkara",
-
     "name": {
       "hi": "कैरी चटकारा",
       "en": "Kairi Chatkara"
     },
-
     "category": "kairi",
-
-    "keywords": ["aam", "mango", "kairi pickle"],
-
-    "image": "images/products/kairi-chatkara.jpg",
-
+    "keywords": ["aam", "mango", "kairi", "chatkara"],
+    "image": "images/products/kairi-chatkara.png",
     "weights": {
       "200gm": 125,
       "500gm": 275,
       "1kg": 525
     }
   },
-
+  {
+    "id": "kairi-shri",
+    "name": {
+      "hi": "कैरी श्री",
+      "en": "Kairi Shri"
+    },
+    "category": "kairi",
+    "keywords": ["aam", "mango", "kairi", "shri"],
+    "image": "images/products/kairi-shri.png",
+    "weights": {
+      "200gm": 125,
+      "500gm": 275,
+      "1kg": 525
+    }
+  },
+  {
+    "id": "kairi-kuta",
+    "name": {
+      "hi": "कैरी कुटा",
+      "en": "Kairi Kuta"
+    },
+    "category": "kairi",
+    "keywords": ["aam", "mango", "kairi", "kuta"],
+    "image": "images/products/kairi-kuta.png",
+    "weights": {
+      "200gm": 125,
+      "500gm": 275,
+      "1kg": 525
+    }
+  },
   {
     "id": "nimbu-mirch",
-
     "name": {
       "hi": "नींबू मिर्च",
       "en": "Nimbu Mirch"
     },
-
     "category": "nimbu",
-
-    "keywords": ["lemon pickle", "nimbu achar"],
-
-    "image": "images/products/nimbu-mirch.jpg",
-
+    "keywords": ["lemon", "chilli", "nimbu", "mirch"],
+    "image": "images/products/nimbu-mirch.png",
+    "weights": {
+      "200gm": 125,
+      "500gm": 275
+    }
+  },
+  {
+    "id": "leswa-mix",
+    "name": {
+      "hi": "लेसवा मिक्स",
+      "en": "Leswa Mix"
+    },
+    "category": "leswa",
+    "keywords": ["leswa", "mix", "achar"],
+    "image": "images/products/leswa-mix.png",
+    "weights": {
+      "200gm": 125,
+      "500gm": 275
+    }
+  },
+  {
+    "id": "kerunda-chatpat",
+    "name": {
+      "hi": "केरुंदा चटपट",
+      "en": "Kerunda Chatpat"
+    },
+    "category": "kerunda",
+    "keywords": ["kerunda", "chatpat", "achar"],
+    "image": "images/products/kerunda-chatpat.png",
     "weights": {
       "200gm": 125,
       "500gm": 275
