@@ -1,17 +1,29 @@
 ﻿let translations = {};
 
+function updateLanguageToggle() {
+  const toggleBtn = document.getElementById("lang-toggle");
+
+  if (!toggleBtn) {
+    return;
+  }
+
+  // Show only the language the user can switch to.
+  toggleBtn.innerText = currentLang === "en" ? "हिंदी" : "English";
+}
+
 async function loadLanguage(lang) {
   const res = await fetch(`i18n/${lang}.json`);
 
   translations = await res.json();
+  currentLang = lang;
 
   applyTranslations();
+  updateLanguageToggle();
 
   localStorage.setItem("lang", lang);
 
-  currentLang = lang;
-
   renderProducts(products);
+  renderCategories();
 }
 
 function applyTranslations() {
@@ -40,14 +52,9 @@ function applyTranslations() {
   });
 }
 
-document.getElementById("lang-hi").onclick = () => {
-  loadLanguage("hi");
-  renderCategories();
-};
-
-document.getElementById("lang-en").onclick = () => {
-  loadLanguage("en");
-  renderCategories();
+document.getElementById("lang-toggle").onclick = () => {
+  const nextLang = currentLang === "en" ? "hi" : "en";
+  loadLanguage(nextLang);
 };
 
 const savedLang = localStorage.getItem("lang") || "hi";
