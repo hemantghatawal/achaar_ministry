@@ -1,4 +1,4 @@
-let translations = {};
+﻿let translations = {};
 
 async function loadLanguage(lang) {
   const res = await fetch(`i18n/${lang}.json`);
@@ -19,7 +19,15 @@ function applyTranslations() {
     const key = el.getAttribute("data-i18n");
 
     if (translations[key]) {
-      el.innerText = translations[key];
+      if (key === "tagline") {
+        const items = translations[key]
+          .split(/\s*(?:•|â€¢)\s*/)
+          .map((item) => item.trim())
+          .filter(Boolean);
+        el.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
+      } else {
+        el.innerText = translations[key];
+      }
     }
   });
 

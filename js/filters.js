@@ -1,4 +1,4 @@
-let categories = [];
+﻿let categories = [];
 
 async function loadCategories() {
   const res = await fetch("data/categories.json");
@@ -18,7 +18,17 @@ function renderCategories() {
     // language aware
     btn.innerText = cat.name[currentLang];
 
+    if (cat.id === "all") {
+      btn.classList.add("is-selected");
+    }
+
     btn.onclick = () => {
+      document
+        .querySelectorAll("#categories .category-btn")
+        .forEach((categoryBtn) => categoryBtn.classList.remove("is-selected"));
+
+      btn.classList.add("is-selected");
+
       if (cat.id === "all") {
         renderProducts(products);
       } else {
