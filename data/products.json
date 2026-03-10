@@ -1,0 +1,42 @@
+[
+  {
+    "id": "kairi-chatkara",
+
+    "name": {
+      "hi": "कैरी चटकारा",
+      "en": "Kairi Chatkara"
+    },
+
+    "category": "kairi",
+
+    "keywords": ["aam", "mango", "kairi pickle"],
+
+    "image": "images/products/kairi-chatkara.jpg",
+
+    "weights": {
+      "200gm": 125,
+      "500gm": 275,
+      "1kg": 525
+    }
+  },
+
+  {
+    "id": "nimbu-mirch",
+
+    "name": {
+      "hi": "नींबू मिर्च",
+      "en": "Nimbu Mirch"
+    },
+
+    "category": "nimbu",
+
+    "keywords": ["lemon pickle", "nimbu achar"],
+
+    "image": "images/products/nimbu-mirch.jpg",
+
+    "weights": {
+      "200gm": 125,
+      "500gm": 275
+    }
+  }
+]
