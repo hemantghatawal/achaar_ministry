@@ -23,32 +23,43 @@ function getProductName(product) {
   return "Unnamed Product";
 }
 
-function renderWeightList(weights) {
+function renderWeightOptions(weights) {
   const entries = Object.entries(weights || {});
 
   if (entries.length === 0) {
-    return "        <li>Price unavailable</li>";
+    return "<option value=\"na\">N/A</option>";
   }
 
   return entries
-    .map(([weight, price]) => {
-      return `        <li>${escapeHtml(weight)} - ₹${escapeHtml(price)}</li>`;
-    })
-    .join("\n");
+    .map(([weight]) => `<option value=\"${escapeHtml(weight)}\">${escapeHtml(weight)}</option>`)
+    .join("");
 }
 
 function renderProductCard(product) {
   const productName = getProductName(product);
   const imagePath = product.image || "images/logo.png";
-  const weightsHtml = renderWeightList(product.weights);
+  const weightEntries = Object.entries(product.weights || {});
+  const firstPrice = weightEntries.length > 0 ? weightEntries[0][1] : "N/A";
 
   return [
     "  <div class=\"product-card\">",
-    `    <img src=\"${escapeHtml(imagePath)}\" alt=\"${escapeHtml(productName)}\">`,
-    `    <h3>${escapeHtml(productName)}</h3>`,
-    "    <ul>",
-    weightsHtml,
-    "    </ul>",
+    `    <img src=\"${escapeHtml(imagePath)}\" alt=\"${escapeHtml(productName)}\" loading=\"lazy\">`,
+    `    <h3 class=\"product-title\">${escapeHtml(productName)}</h3>`,
+    "    <div class=\"purchase-meta\">",
+    "      <div class=\"weight-wrap\">",
+    "        <span class=\"meta-label\">Weight</span>",
+    `        <select class=\"weight-select\">${renderWeightOptions(product.weights)}</select>`,
+    "      </div>",
+    `      <div class=\"price-chip\">₹<span class=\"price-value\">${escapeHtml(firstPrice)}</span></div>`,
+    "    </div>",
+    "    <div class=\"purchase-row\">",
+    "      <div class=\"qty-controls\">",
+    "        <button type=\"button\" class=\"qty-btn qty-minus\">-</button>",
+    "        <input type=\"number\" value=\"1\" min=\"1\" class=\"qty\" readonly>",
+    "        <button type=\"button\" class=\"qty-btn qty-plus\">+</button>",
+    "      </div>",
+    "      <button class=\"add-cart\" type=\"button\">Add</button>",
+    "    </div>",
     "  </div>",
   ].join("\n");
 }
